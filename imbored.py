@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
 from __future__ import division, print_function
+import os
+import sys
 import random
+
+SUGGESTION_FILE = '~/.imbored.config'
 
 default_suggestions = {
     'read books': 5,
@@ -34,5 +38,25 @@ def suggest(suggestions):
 
     raise AssertionError('Should not be here. O_O');
 
+def load_suggestions(suggestion_file):
+    suggestions = {}
+
+    with open(suggestion_file) as sf:
+        for line in sf:
+            task, weight = line.split(':')
+            suggestions[task.strip()] = float(weight)
+
+    return suggestions
+
 if __name__ == '__main__':
-    print(suggest(default_suggestions) + '?')
+    suggestions = default_suggestions
+
+    # load user-defined suggestions if the file exists
+    user_suggestion_file = os.path.expanduser(SUGGESTION_FILE)
+    if os.path.exists(user_suggestion_file):
+        try:
+            suggestions = load_suggestions(user_suggestion_file)
+        except:
+            print('Error loading ' + user_suggestion_file, file=sys.stderr)
+
+    print(suggest(suggestions) + '?')

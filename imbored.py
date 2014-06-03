@@ -5,7 +5,7 @@ import os
 import sys
 import random
 
-SUGGESTION_FILE = '~/.imbored.config'
+SUGGESTION_FILE = '.imbored.config'
 
 default_suggestions = {
     'Read leisure books': 5,
@@ -66,4 +66,4 @@ if __name__ == '__main__':
         except:
             print('Error loading ' + user_suggestion_file, file=sys.stderr)
 
-    print(suggest(suggestions) + '?')
+    print(suggest(suggestions) + '!')

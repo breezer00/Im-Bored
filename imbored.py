@@ -8,10 +8,17 @@ import random
 SUGGESTION_FILE = '~/.imbored.config'
 
 default_suggestions = {
-    'read books': 5,
-    'practice coding': 3,
-    'read manga': 1,
-    'watch dramas': 1,
+    'Read leisure books': 5,
+    'Read tech books': 4,
+    'Do Eudyptula Challenge': 2,
+    'Watch TV shows': 3,
+    'Read news': 4,
+    'Play games': 1,
+    'Watch course videos': 2,
+    'Chat with others': 2,
+    'Exercise': 1,
+    'Watch a movie': 1,
+    'Coding challenge': 1
 }
 
 def suggest(suggestions):

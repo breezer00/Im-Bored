@@ -61,9 +61,12 @@ if __name__ == '__main__':
     # load user-defined suggestions if the file exists
     user_suggestion_file = os.path.expanduser(SUGGESTION_FILE)
     if os.path.exists(user_suggestion_file):
+        print('Using custom suggestion file ' + SUGGESTION_FILE + ' :')
         try:
             suggestions = load_suggestions(user_suggestion_file)
         except:
             print('Error loading ' + user_suggestion_file, file=sys.stderr)
+    else:
+        print('Using default suggestions:')
 
     print(suggest(suggestions) + '!')
